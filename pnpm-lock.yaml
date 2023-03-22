@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@types/cors': ^2.8.13
   '@types/express': ^4.17.17
+  '@types/hashmap': ^2.3.1
   '@types/natural': ^5.1.2
   '@types/node': ^18.15.5
   '@types/react': ^18.0.28
@@ -12,12 +13,14 @@ specifiers:
   apos-to-lex-form: ^1.0.5
   cors: ^2.8.5
   express: ^4.18.2
+  hashmap: ^2.4.0
   natural: ^6.2.0
   react: ^18.2.0
   react-dom: ^18.2.0
   spelling-corrector: ^3.0.0
   stopword: ^2.0.7
   ts-node-dev: ^2.0.0
+  tsx: ^3.12.6
   typescript: ^4.9.3
   vite: ^4.2.0
 
@@ -25,6 +28,7 @@ dependencies:
   apos-to-lex-form: 1.0.5
   cors: 2.8.5
   express: 4.18.2
+  hashmap: 2.4.0
   natural: 6.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -34,6 +38,7 @@ dependencies:
 devDependencies:
   '@types/cors': 2.8.13
   '@types/express': 4.17.17
+  '@types/hashmap': 2.3.1
   '@types/natural': 5.1.2
   '@types/node': 18.15.5
   '@types/react': 18.0.28
@@ -41,6 +46,7 @@ devDependencies:
   '@types/stopword': 2.0.0
   '@vitejs/plugin-react': 3.1.0_vite@4.2.1
   ts-node-dev: 2.0.0_345kigqis4fipgyy5xb3ndshmq
+  tsx: 3.12.6
   typescript: 4.9.5
   vite: 4.2.1_@types+node@18.15.5
 
@@ -279,6 +285,27 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+    dev: true
+
+  /@esbuild-kit/cjs-loader/2.4.2:
+    resolution: {integrity: sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==}
+    dependencies:
+      '@esbuild-kit/core-utils': 3.1.0
+      get-tsconfig: 4.4.0
+    dev: true
+
+  /@esbuild-kit/core-utils/3.1.0:
+    resolution: {integrity: sha512-Uuk8RpCg/7fdHSceR1M6XbSZFSuMrxcePFuGgyvsBn+u339dk5OeL4jv2EojwTN2st/unJGsVm4qHWjWNmJ/tw==}
+    dependencies:
+      esbuild: 0.17.12
+      source-map-support: 0.5.21
+    dev: true
+
+  /@esbuild-kit/esm-loader/2.5.5:
+    resolution: {integrity: sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==}
+    dependencies:
+      '@esbuild-kit/core-utils': 3.1.0
+      get-tsconfig: 4.4.0
     dev: true
 
   /@esbuild/android-arm/0.17.12:
@@ -574,6 +601,10 @@ packages:
       '@types/express-serve-static-core': 4.17.33
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.1
+    dev: true
+
+  /@types/hashmap/2.3.1:
+    resolution: {integrity: sha512-BEi/E4mDlkmqzljUy4y035Qc2Q+DhIN6zevuyCtTjCHpEebMG5ahXSyzqNtQ7yFmR0c4L3li88f3cvU9YjzzcQ==}
     dev: true
 
   /@types/mime/3.0.1:
@@ -1142,6 +1173,10 @@ packages:
       has-symbols: 1.0.3
     dev: false
 
+  /get-tsconfig/4.4.0:
+    resolution: {integrity: sha512-0Gdjo/9+FzsYhXCEFueo2aY1z1tpXrxWZzP7k8ul9qt1U5o8rYJwTJYmaeHdrVosYIVYkOy2iwCJ9FdpocJhPQ==}
+    dev: true
+
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -1194,6 +1229,10 @@ packages:
 
   /hashmap/2.0.3:
     resolution: {integrity: sha512-rK8JpJs7+ImpseLGVdAq58VDNKc2kNRr1Jp5eoJKT1z8UQuRiNlDv2VAXghbFUiU1icUo8Y1NGe+btg5nDpMYw==}
+    dev: false
+
+  /hashmap/2.4.0:
+    resolution: {integrity: sha512-Ngj48lhnxJdnBAEVbubKBJuN1elfVLZJs94ZixRi98X3GCU4v6pgj9qRkHt6H8WaVJ69Wv0r1GhtS7hvF9zCgg==}
     dev: false
 
   /http-errors/2.0.0:
@@ -1840,6 +1879,17 @@ packages:
       '@types/strip-json-comments': 0.0.30
       strip-bom: 3.0.0
       strip-json-comments: 2.0.1
+    dev: true
+
+  /tsx/3.12.6:
+    resolution: {integrity: sha512-q93WgS3lBdHlPgS0h1i+87Pt6n9K/qULIMNYZo07nSeu2z5QE2CellcAZfofVXBo2tQg9av2ZcRMQ2S2i5oadQ==}
+    hasBin: true
+    dependencies:
+      '@esbuild-kit/cjs-loader': 2.4.2
+      '@esbuild-kit/core-utils': 3.1.0
+      '@esbuild-kit/esm-loader': 2.5.5
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /type-is/1.6.18:
