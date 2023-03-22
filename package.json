@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "A simple project to learn a little about NLP.",
+  "author": "Eddie Naff",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
