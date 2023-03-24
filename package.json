@@ -30,7 +30,9 @@
     "spelling-corrector": "^3.0.0",
     "stopword": "^2.0.7",
     "stopwords-iso": "^1.1.0",
-    "underscore": "^1.13.6"
+    "underscore": "^1.13.6",
+    "zod": "^3.21.4",
+    "zod-fetch": "^0.1.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
