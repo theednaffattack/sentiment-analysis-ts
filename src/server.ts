@@ -8,10 +8,13 @@ import { getSentiment } from "./nlp";
 export async function configFn() {
   const originPrefix = "http://";
   const port = "4000";
+  const frontendPort = "5173";
   const domain = await internalIpV4();
-  const origin = originPrefix + domain + ":" + port;
+  const origin = originPrefix + domain + ":" + frontendPort;
+  const serverOrigin = originPrefix + domain + ":" + port;
   return {
     port,
+    server: serverOrigin,
     origin: origin,
   };
 }
@@ -25,11 +28,19 @@ export async function server() {
 
   app.use(cors({ origin: config.origin }));
 
-  const message = `Network access via: ${Colors.colors("red", config.origin)}`;
-
+  const appMessage = `${Colors.colors("green", "App is running!")}`;
+  const frontendMessage = `Frontend access via: ${Colors.colors(
+    "red",
+    config.origin
+  )}`;
+  const backendMessage = `Server running at: ${Colors.colors(
+    "red",
+    config.server
+  )}`;
   app.listen(config.port, () => {
-    console.log("App is running");
-    console.log(message);
+    console.log(appMessage);
+    console.log(frontendMessage);
+    console.log(backendMessage);
   });
 
   app.get("/", (_req, res) => res.send("App reached."));
