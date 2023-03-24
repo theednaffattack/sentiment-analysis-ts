@@ -1,6 +1,11 @@
 import HashMap from "hashmap";
-
+import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 // Create a TS version
 export class SpellCorrector {
@@ -73,9 +78,10 @@ export class SpellCorrector {
     return result;
   }
 
-  loadDictionary(dictPath: string) {
-    dictPath = dictPath || __dirname + "/big.txt";
-    let file = fs.readFileSync(dictPath).toString().toLowerCase();
+  loadDictionary(dictPath?: string) {
+    let realDictPath = dictPath ? dictPath : __dirname + "/big.txt";
+
+    let file = fs.readFileSync(realDictPath).toString().toLowerCase();
     let regex = /[a-z]+/g;
     let match: RegExpExecArray | null;
     let word: string;
