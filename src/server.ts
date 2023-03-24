@@ -1,23 +1,49 @@
-// import express from "express";
-import { aposToLexForm } from "../libs/apos-to-lex-form/main";
-import { WordTokenizer } from "natural";
-import { SpellCorrector } from "../libs/spelling-corrector/main";
+import express from "express";
+import Colors from "colors.ts";
+import cors from "cors";
+import { internalIpV4 } from "internal-ip";
 
-const tokenizer = new WordTokenizer();
+import { getSentiment } from "./nlp";
 
-export const hello = "world";
-
-console.log("sucka free!");
-
-function getSentiment(str: string): -1 | 0 | 1 {
-  if (!str.trim()) {
-    return 0;
-  }
-  const lexed = aposToLexForm(str)
-    .toLowerCase()
-    .replace(/[^a-zA-Z\s]+/g, "");
-
-  const tokenized = tokenizer.tokenize(lexed);
-  // default
-  return 0;
+export async function configFn() {
+  const originPrefix = "http://";
+  const port = "4000";
+  const domain = await internalIpV4();
+  const origin = originPrefix + domain + ":" + port;
+  return {
+    port,
+    origin: origin,
+  };
 }
+
+export async function server() {
+  const config = await configFn();
+
+  const app = express();
+
+  app.use(express.json());
+
+  app.use(cors({ origin: config.origin }));
+
+  const message = `Network access via: ${Colors.colors("red", config.origin)}`;
+
+  app.listen(config.port, () => {
+    console.log("App is running");
+    console.log(message);
+  });
+
+  app.get("/", (_req, res) => res.send("App reached."));
+  app.get("/health", (_req, res) => res.send(200));
+  app.post("/api/sentiment", (req, res) => {
+    const data = req.body.data;
+    const sentiment = getSentiment(data);
+
+    return res.send({ sentiment });
+  });
+}
+
+server()
+  .then()
+  .catch((err) => {
+    console.error("SERVER ERROR", err);
+  });
